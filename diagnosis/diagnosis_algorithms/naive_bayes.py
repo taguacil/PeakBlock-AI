@@ -61,24 +61,27 @@ def bayes_estimator(features, likelihoods, likelihoodsc):
     numerator = 1
     product = 1
     product_c = 1
-    for name, feature in features.items():
-        if name == "prior":
-            pass
-        elif name not in likelihoods.keys():
-            pass
-        else:
-            if feature:
-                numerator *= likelihoods[name]
-                product *= likelihoods[name]
-                product_c *= likelihoodsc[name]
+    if features['immune']:
+        return 1
+    else:
+        for name, feature in features.items():
+            if name == "prior":
+                pass
+            elif name not in likelihoods.keys():
+                pass
             else:
-                numerator *= (1-likelihoods[name])
-                product *= (1-likelihoods[name])
-                product_c *= (1-likelihoodsc[name])
+                if feature:
+                    numerator *= likelihoods[name]
+                    product *= likelihoods[name]
+                    product_c *= likelihoodsc[name]
+                else:
+                    numerator *= (1-likelihoods[name])
+                    product *= (1-likelihoods[name])
+                    product_c *= (1-likelihoodsc[name])
 
-    denominator = prior*product + priorc*product_c
-    probability *= numerator/denominator
-    return probability
+        denominator = prior*product + priorc*product_c
+        probability *= numerator/denominator
+        return probability
 
 
 class PredictorClass(MasterPredictor):

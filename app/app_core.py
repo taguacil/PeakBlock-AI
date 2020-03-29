@@ -26,9 +26,11 @@ from diagnosis.diagnosis_algorithms.naive_bayes import PredictorClass
 
 _endpoint_route = lambda x: app_endpoints.route(URL_BASE + x, methods=['GET', 'POST'])
 
+
 @_endpoint_route('/home')
 def _home(request):
     return response.html('<p>Hello world!</p>')
+
 
 @_endpoint_route('/diagnosis')
 def _diagnosis(request):
