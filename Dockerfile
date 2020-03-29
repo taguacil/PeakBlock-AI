@@ -21,7 +21,8 @@ ENV PYTHONIOENCODING utf-8
 RUN useradd -G users -m runner
 
 WORKDIR /mnt/
-RUN pip3 install -vv  git+https://github.com/taguacil/PeakBlock.git#subdirectory=analytics
+COPY . /mnt/
+RUN pip3 install -r requirements.txt
 #Argument to rebuild from this point after an update
 ARG COMMIT_SHA1=1
 
@@ -53,7 +54,7 @@ ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
 # max size of inline text will be 150000 characters:
 #ENV PEAKBLOCK_WEBSERVICE_MAX_SIZE_INLINE_TEXT 150000
 
-WORKDIR /mnt/analytics
-CMD ["bash" ,"-c", "python3 -m run " ]
+WORKDIR /mnt/
+CMD ["bash" ,"-c", "python3 run.py " ]
 
-#docker stop my_service;docker rm my_service;docker build -t my_service_image -f analytics/deployment/Dockerfile . && docker run -ti --ulimit core=0:0 --user runner --rm -v $(pwd)/..:/mnt --name my_service my_service_image
+#docker stop my_service;docker rm my_service;docker build -t my_service_image -f analytics/deployment/Dockerfile . && docker run -ti --ulimit core=0:0 --user runner --name my_service my_service_image

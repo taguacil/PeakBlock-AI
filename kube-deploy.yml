@@ -7,12 +7,11 @@ resources:
 
 variables:
 
-  # Container registry service connection established during pipeline creation
-  db : 'mongodb://$(db_username):$(db_password)@$(db_url):$(db_port)'
+  # Container registry service connection established during pipeline creations
   dockerRegistryServiceConnection: '64c83f37-a048-4941-a52c-8e76e8ce5996'
-  imageRepository: 'peakblockbackend'
+  imageRepository: 'peakblockai'
   containerRegistry: 'cohub.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/backend'
+  dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'cohube837-auth'
 
@@ -36,19 +35,16 @@ stages:
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: $(tag)
-        arguments: '--build-arg db_var=$(db)'
-        buildContext: '$(Build.SourcesDirectory)/backend'
     - task: Docker@2
       displayName: Push the image to container registry
       inputs:
         command: 'push'
         repository: $(imageRepository)
-        dockerfile: $(backenddockerfilePath)
+        dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection) 
         
-    - upload: backend/manifests
-      artifact: backend_manifests
-
+    - upload: manifests
+      artifact: manifests
 - stage: DeployBackend
   displayName: Deploy backend stage
   dependsOn: BuildBackend
@@ -75,8 +71,8 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(Pipeline.Workspace)/backend_manifests/deployment.yml
-                $(Pipeline.Workspace)/backend_manifests/service.yml
+                $(Pipeline.Workspace)/manifests/deployment.yml
+                $(Pipeline.Workspace)/manifests/service.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
