@@ -1,16 +1,16 @@
 apiVersion : apps/v1beta1
 kind: Deployment
 metadata:
-  name: peakblockanalytics 
+  name: peakblockai 
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: peakblockanalytics 
+        app: peakblockai 
     spec:
       containers:
-        - name: peakblockanalytics 
-          image: cohub.azurecr.io/peakblockanalytics
+        - name: peakblockai 
+          image: cohub.azurecr.io/peakblockai
           ports:
           - containerPort: 5555

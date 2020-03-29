@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-    name: peakblockanalytics
+    name: peakblockai
 spec:
     type: ClusterIP
     ports:
     - port: 5555 
     selector:
-        app: peakblockanalytics
+        app: peakblockai
