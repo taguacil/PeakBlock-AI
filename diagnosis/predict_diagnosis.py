@@ -40,6 +40,14 @@ class DiagnosisPredictor:
         covid_probability = self.model.predict(processed_features)
         return covid_probability
 
+    def process_api_data(self, dict):
+        output_series = pd.Series(dict['symptoms'])
+        output_series['immune'] = dict['excorona']
+        output_series['fever'] = output_series['bodyTemperature'] > 38
+        output_series['prior'] = dict['confirmedCases'] / 100.0   # Total population is hard-coded just for testing
+
+        return output_series
+
 
 if __name__ == '__main__':
     config = {
@@ -48,9 +56,9 @@ if __name__ == '__main__':
     }
     features = pd.DataFrame({
         'prior': {'Taimir': 0.003, 'Ramy':0.005},
-        'dry_cough': {'Taimir':0, 'Ramy':1},
-        'fever': {'Taimir':1, 'Ramy':0},
-        'difficulty_breathing': {'Taimir':1, 'Ramy':1}
+        'cough': {'Taimir':1, 'Ramy':1},
+        'fever': {'Taimir':1, 'Ramy':1},
+        'dyspnea_at_rest': {'Taimir':1, 'Ramy':1}
     })
     predictorObj = DiagnosisPredictor(config)
     print(predictorObj.run_inference(features))
