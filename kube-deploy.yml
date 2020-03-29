@@ -8,12 +8,12 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creations
-  dockerRegistryServiceConnection: 'b354dbf7-1135-436d-a438-5cb54fb65b55'
+  dockerRegistryServiceConnection: 'ddd74217-4da6-4b40-b017-77d4b357efb2'
   imageRepository: 'peakblockai'
   containerRegistry: 'cohub.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'cohub2699e134-auth'
+  imagePullSecret: 'cohub2aca-auth'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
