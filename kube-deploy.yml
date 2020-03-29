@@ -8,12 +8,12 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creations
-  dockerRegistryServiceConnection: '64c83f37-a048-4941-a52c-8e76e8ce5996'
+  dockerRegistryServiceConnection: 'b354dbf7-1135-436d-a438-5cb54fb65b55'
   imageRepository: 'peakblockai'
   containerRegistry: 'cohub.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'cohube837-auth'
+  imagePullSecret: 'cohub2699e134-auth'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -54,7 +54,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'taguacilPeakBlock.ingress-basic'
+    environment: 'peakblockai.ingress-basic'
     strategy:
       runOnce:
         deploy:
