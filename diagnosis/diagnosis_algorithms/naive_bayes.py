@@ -62,7 +62,7 @@ def bayes_estimator(features, likelihoods, likelihoodsc):
     product = 1
     product_c = 1
     if features['immune']:
-        return 1
+        return 0
     else:
         for name, feature in features.items():
             if name == "prior":
