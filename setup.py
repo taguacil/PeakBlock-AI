@@ -57,7 +57,7 @@ setup(
         'idna == 2.9',
         'immutables == 0.11',
         'itsdangerous == 1.1.0',
-        'Jinja2 == 2.11.1',
+        'Jinja2 == 2.11.3',
         'joblib == 0.14.1',
         'MarkupSafe == 1.1.1',
         'multidict == 4.7.5',
