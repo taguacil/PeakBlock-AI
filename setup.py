@@ -72,7 +72,7 @@ setup(
         'six == 1.14.0',
         'sklearn == 0.0',
         'sniffio == 1.1.0',
-        'websockets == 8.1',
+        'websockets == 9.1',
         'Werkzeug == 1.0.0',
     ],
     package_data={
