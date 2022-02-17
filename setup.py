@@ -66,7 +66,7 @@ setup(
         'python-dateutil == 2.8.1',
         'pytz == 2019.3',
         'rfc3986 == 1.3.2',
-        'sanic == 19.12.2',
+        'sanic == 20.12.6',
         'scikit-learn == 0.22.2.post1',
         'scipy == 1.4.1',
         'six == 1.14.0',
