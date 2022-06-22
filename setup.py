@@ -61,7 +61,7 @@ setup(
         'joblib == 0.14.1',
         'MarkupSafe == 1.1.1',
         'multidict == 4.7.5',
-        'numpy == 1.18.2',
+        'numpy == 1.22.0',
         'pandas == 1.0.3',
         'python-dateutil == 2.8.1',
         'pytz == 2019.3',
