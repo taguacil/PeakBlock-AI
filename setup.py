@@ -58,7 +58,7 @@ setup(
         'immutables == 0.11',
         'itsdangerous == 1.1.0',
         'Jinja2 == 2.11.1',
-        'joblib == 0.14.1',
+        'joblib == 1.2.0',
         'MarkupSafe == 1.1.1',
         'multidict == 4.7.5',
         'numpy == 1.18.2',
